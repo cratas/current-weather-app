@@ -2,94 +2,187 @@
 
 
 body {
-    background-color: red;
     font-family: 'Epilogue', sans-serif;
+    background:  url("../graphics/absolute_background.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
-.scroll-indicator {
-    position: fixed;
-    top: 0;
-    z-index: 1;
+.conent-wrapper {
+    margin-top: 80px;
     width: 100%;
-    background-color: #f1f1f1;
-  }
-  
-  /* The progress container (grey background) */
-  .progress-container {
-    width: 100%;
-    height: 8px;
-    background: #ccc;
-  }
-  
-  /* The progress bar (scroll indicator) */
-  #myBar {
-    height: 8px;
-    background-color: red;
-    width: 0%;
-  }
-
-.introdaction-wrapper {
-    width: 100%;
-    padding-top: 120px;
-    border-radius: 20px;
-    min-width: 600px;
+    height: 700px;
+    background:  url("../graphics/rain_background.jpg") no-repeat center center; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    display: flex;
+    flex-direction: row;
 }
 
-.introdaction-image {
-    background-image: url("../graphics/rainbow.png");
-    min-height: 700px;
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: contain; /* Resize the background image to cover the entire container */
+/* left side of layout */
+.left-col {
+    width: 60%;
+    height: 100%;
+    padding: 70px;
+    display: flex;
+    flex-direction: column;
+    color: #fff;
 }
 
-.introdaction-text-wrapper {
+.top-row {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+}
+
+.top-row-left-col {
+    width: 50%;
+    height: 100%;
+}
+
+.top-row-left-col h1 {
+    font-size: 100px;
+}
+
+.top-row-right-col {
+    width: 50%;
+    height: 100%;
+}
+
+.bottom-row {
+    width: 100%;
+    height: 50%;
+
+}
+
+
+
+
+
+/* right side of layout */
+.right-col {
+    width: 40%;
+    background-color:rgba(0,0,0,0.2);
+    backdrop-filter: blur(8px);
+    padding: 35px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.city-input {
+    border: none;
+    background: transparent;
+    color: #999999;
+    border-bottom: 1px solid #acacac;
+    width: 100%;
+    padding: 10px 10px 10px 0px;
+}
+
+.city-input:focus {
+    outline: none;
+    color: #fff;
+}
+
+
+.fav-cities-wrapper {
+    position: relative;
+    top: 30px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.fav-cities-button {
+    position: relative;
+    text-align: left;
+    margin-bottom: 30px;
+    color: #acacac;
+    border: none;
+    background: transparent;
+    padding-left: 0px;
+}
+
+.fav-cities-button:hover {
+    color: #fff;
+}
+
+.btn.submit-button {
     position: absolute;
-    width: 35%;
+    top: 36px;
+    right: 35px;
+    border-radius: 0px;
+    background-color: #999999;
+    padding: 10px 15px 10px 15px;
 }
 
-.introdaction-text-wrapper h1 {
-    font-weight: bold;
-    font-size: 4rem;
-}
+.btn.submit-button:focus {
+    outline: none !important;
+    box-shadow: none;
+ }
 
-/* .introdaction-text-wrapper button {
-    position: absolute;
+.btn.submit-button:hover {
     background-color: #fff;
-    border: 2px solid red;
-    color: red;
-    font-size: 2rem;
-    font-weight: bold;
-    border-radius: 10px;
-    padding: 10px 20px 10px 20px;
-    margin-top: 20px;
-    left: 40%;
-} */
-
-
-
-@media screen and (max-width: 1000px) {
-    .introdaction-text-wrapper h1 {
-        font-size: 3rem;
-    }
-
-    .introdaction-text-wrapper {
-        position: absolute;
-        width: 80%;
-        text-align: center;
-    }
-
-    .introdaction-wrapper {
-        padding-top: 40px;
-    }
-
 }
 
+
+.divider-line {
+    height: 1px;
+    width: 100%;
+    background-color: #acacac;
+}
+
+
+.weather-details-sub {
+    margin-top: 80px;
+    color: #fff;
+    text-align: left;
+}
+.weather-details-sub h6 {
+    font-size: 1em;
+}
+
+
+.weather-details {
+    margin-top: 50px;
+    color: #acacac;
+    display: flex;
+    flex-direction: row;
+}
+
+
+.weather-details-left {
+    width: 50%;
+    text-align: left;
+}
+
+.weather-details-right {
+    width: 50%;
+    text-align: right;
+}
+
+.weather-details-left p {
+    margin-bottom: 30px;
+}
+
+.weather-details-right p {
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+.fav-cities-button:focus {
+    outline: none;
+}
+
+/* map section */
 .map-wrapper {
     width: 100%;
     height: 100%;
-    margin-top: 250px;
-    margin-bottom: 100px;
 }
 
 .map-container{

@@ -11,43 +11,89 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src='script.js'></script>
 
 </head>
 
 <body>
 
-    <!-- <div class="scroll-indicator">
-        <div class="progress-container">
-            <div id="myBar"></div>
+
+    <div class="container">
+        <div class="conent-wrapper">
+            <div class="left-col">
+                <div class="top-row">
+                    <div class="top-row-left-col">
+                        <h1 id=temperature>8°</h1>
+                    </div>
+                    <div class="top-row-right-col">
+                        <p>asdasd</p>
+                    </div>
+                    
+                </div>
+                <div class="bottom-row">
+                    <h1 id=temperature>08°</h1>
+                </div>
+      
+            </div>
+            <div class="right-col">
+                <input type="text" id="cityInput" name="cityInput" class="city-input" placeholder="Zadej polohu">
+                <button class="btn submit-button" id="submitButton"><i class="fa fa-search fa-1x"></i></button>
+
+                <div class="fav-cities-wrapper">
+                    <button class="fav-cities-button first" id="favCityButton">Praha</button>
+                    <button class="fav-cities-button" id="favCityButtonOstrava">Ostrava</button>
+                    <button class="fav-cities-button" id="favCityButton">Brno</button>
+                    <div class="divider-line"></div>
+                </div>
+
+                <div class="weather-details-sub">
+                    <h6>Detaily počasí<h3>
+                </div>
+                <div class="weather-details">
+                    <div class="weather-details-left">
+                        <p>Rychlost větru</p>
+                        <p>Oblačno</p>
+                        <p>Pocitová teplota</p>
+                        <p>Tlak</p>
+                    </div>
+                    <div class="weather-details-right">
+                        <p id="windSpeed"></p>
+                        <p id="cloudiness"></p>
+                        <p id="feelTemp"></p>
+                        <p id="pressure"></p>
+                    </div>
+                </div>
+
+                <div class="divider-line"></div>
+                
+
+            </div>
         </div>
     </div>
 
-    <div class="introdaction-wrapper container">
 
-        <div class="introdaction-image">
-            <div class="introdaction-text-wrapper">
-                <h1>Let's find out the weather in your location!</h1>
-            </div>
-        </div>
-    </div> -->
-
-    <div class="map-wrapper container">
+    <!-- <div class="map-wrapper container">
+    
 
 
-        <form>
-            <label for="cityInput">Zadej název města</label><br>
-            <input type="text" id="cityInput" name="cityInput"><br>
 
-            <input type="submit" id="submitButton" value="Submit">
-        </form>
+        <label for="cityInput">Zadej název města</label><br>
+        <input type="text" id="cityInput" name="cityInput">
+
+        <input type="submit" id="submitButton" value="Submit">
+
+        <p id="locationOutput"></p>
+        <p id="temperatureOutput"></p>
+        <p id="descriptionOutput"></p>
+        <p id="windSpeedOutput"></p>
 
 
         <div id="map-container-google-1" class="z-depth-1-half map-container" style="height: 500px">
-            <iframe src="https://maps.google.com/maps?q=manhatan&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0" allowfullscreen></iframe>
+            <iframe id="mapIFrame" src="https://maps.google.com/maps?q=&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
 
-    </div>
+    </div> -->
 
 
     <script>
