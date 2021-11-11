@@ -78,20 +78,28 @@ $(document).ready(function() {
 });
 
 function checkWeatherCondition(conditionParameter) {
+
     if(conditionParameter >= 200 && conditionParameter < 240) {
-        $("#description").html("Bouřka");
+        $('.weather-icon').hide();
+        $("#iconStorm").show();
     } else if(conditionParameter >= 300 && conditionParameter < 322) {
-        $("#description").html("Mrholení");
+        $('.weather-icon').hide();
+        $("#iconRain").show();
     } else if(conditionParameter >= 500 && conditionParameter < 532) {
+        $('.weather-icon').hide();
         $("#iconRain").show();
     } else if(conditionParameter >= 600 && conditionParameter < 623) {
-        $("#description").html("Sníh");
+        $('.weather-icon').hide();
+        $("#iconSnow").show();
     } else if(conditionParameter >= 701 && conditionParameter < 782) {
-        $("#description").html("Mlha");
+        $('.weather-icon').hide();
+        $("#iconFog").show();
     } else if(conditionParameter == 800) {
-        $("#iconRain").show();
+        $('.weather-icon').hide();
+        $("#iconSun").show();
     } else if(conditionParameter > 800 && conditionParameter < 805) {
-        $("#iconRain").show();
+        $('.weather-icon').hide();
+        $("#iconCloud").show();
     }
 }
 
