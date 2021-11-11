@@ -1,8 +1,16 @@
 $(document).ready(function() {
 
+    var today = new Date();
+    var date = today.getDate();
+    var time = ('0'+today.getHours()).substr(-2) + ":" + ('0'+today.getMinutes()).substr(-2);
+    var dateTime = time + ' - ' + (today.toLocaleString('en-us', {  weekday: 'long' })) + ', ' + date
+        + ' ' + (today.toLocaleString('en-us', { month: 'long' }).substring(0,3));
+    
+        $('#dateTime').html(dateTime);
+
     $('#submitButton').click(function() {
         let inputCity = $('#cityInput').val();
-        let weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + inputCity + '&appid=f1a2685da05fe3b5355e7f7a70db4d4c';
+        let weatherURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + inputCity + '&appid=f1a2685da05fe3b5355e7f7a70db4d4c&lang=cz';
 
         fetch(weatherURL)
             .then(response => response.json())
@@ -11,9 +19,10 @@ $(document).ready(function() {
                 let mapURL = 'https://maps.google.com/maps?q=' + inputCity + '&t=&z=13&ie=UTF8&iwloc=&output=embed';
 
                 $('#mapIFrame').attr("src", mapURL);
-                $("#locationOutput").html(inputCity);
-                $("#temperatureOutput").html(data["main"]["temp"]);
-                $("#descriptionOutput").html(data["weather"]["0"]["description"]);
+                $("#city").html(inputCity);
+                $("#temperature").html(parseInt(data["main"]["temp"]) - 273 + "°")
+                $("#description").html(data["weather"]["0"]["description"]);
+                checkWeatherCondition(data["weather"]["0"]["id"]);
                 $("#windSpeedOutput").html(data["wind"]["speed"]);
                 $("#windSpeed").html(data["wind"]["speed"] + " m/s");
                 $("#cloudiness").html(data["clouds"]["all"] + " %");
@@ -21,10 +30,17 @@ $(document).ready(function() {
                 $("#pressure").html(data["main"]["pressure"] + " hPa");
                 
                 $('#cityInput').val("");
+                
 
                 console.log(data);
             })
-        .catch(err => alert("Wrong city name"));
+        .catch(err => {
+            alert("Wrong city name")
+            $("#city").html("");
+            $("#temperature").html("");
+            $('.image-wrapper').hide();
+            $('#cityInput').val("");
+        });
     });
 
 
@@ -57,4 +73,27 @@ $(document).ready(function() {
     //     var scrolled = (winScroll / height) * 100;
     //     document.getElementById("myBar").style.width = scrolled + "%";
     // }
+
+
 });
+
+function checkWeatherCondition(conditionParameter) {
+    if(conditionParameter >= 200 && conditionParameter < 240) {
+        $("#description").html("Bouřka");
+    } else if(conditionParameter >= 300 && conditionParameter < 322) {
+        $("#description").html("Mrholení");
+    } else if(conditionParameter >= 500 && conditionParameter < 532) {
+        $("#iconRain").show();
+    } else if(conditionParameter >= 600 && conditionParameter < 623) {
+        $("#description").html("Sníh");
+    } else if(conditionParameter >= 701 && conditionParameter < 782) {
+        $("#description").html("Mlha");
+    } else if(conditionParameter == 800) {
+        $("#iconRain").show();
+    } else if(conditionParameter > 800 && conditionParameter < 805) {
+        $("#iconRain").show();
+    }
+}
+
+
+
