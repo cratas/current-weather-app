@@ -44,6 +44,13 @@ $(document).ready(function() {
     });
 
 
+    // $('#showMapButton').hover(function() {
+    //     $(this).text("Zobrazit mapu")
+    //     $(this).css("font-size", "20px").css("font-weight", "bold");
+    // }, function() {
+    //     $(this).text('\u21E3')
+    // });
+
     $('.fav-cities-button').click(function() {
         let cityName = $(this).text();;
         console.log(cityName);
