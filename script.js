@@ -1,5 +1,8 @@
+var isMapShown;
+
 $(document).ready(function() {
 
+    var isMapShown = false;
     var today = new Date();
     var date = today.getDate();
     var time = ('0' + today.getHours()).substr(-2) + ":" + ('0' + today.getMinutes()).substr(-2);
@@ -44,15 +47,33 @@ $(document).ready(function() {
     });
 
 
-    // $('#showMapButton').hover(function() {
-    //     $(this).text("Zobrazit mapu")
-    //     $(this).css("font-size", "20px").css("font-weight", "bold");
-    // }, function() {
-    //     $(this).text('\u21E3')
-    // });
+    $('#showMapButton').click(function() {
+        isMapShown = (isMapShown == true) ? isMapShown = false : isMapShown = true;
+        console.log(isMapShown);
+        if (!isMapShown) {
+            $('#showMapButton').text('\u21e3 Mapa');
+            $('.map-wrapper').removeClass('animation-slide-down-class');
+            $('.map-wrapper').addClass('animation-slide-up-class');
+            // $('.map-wrapper').hide();
+            setTimeout(function() {
+                $('.map-wrapper').hide();
+                // window.scrollTo(0, 0);
+            }, 900);
+        } else {
+            $('#showMapButton').text('\u21E1 Mapa');
+            $('.map-wrapper').removeClass('animation-slide-up-class');
+            $('.map-wrapper').addClass('animation-slide-down-class');
+            $('.map-wrapper').show();
+
+            setTimeout(function() {
+                window.scrollTo(0, document.body.scrollHeight);
+            }, 900);
+
+        }
+    });
 
     $('.fav-cities-button').click(function() {
-        let cityName = $(this).text();;
+        let cityName = $(this).text();
         console.log(cityName);
 
         $('#cityInput').val(cityName);
@@ -60,13 +81,6 @@ $(document).ready(function() {
         $('#cityInput').val("");
     });
 
-    function wrongInput() {
-        $('#mapIFrame').attr("src", "mapURL");
-        $("#locationOutput").html("");
-        $("#temperatureOutput").html("");
-        $("#descriptionOutput").html("");
-        $("#windSpeedOutput").html("");
-    }
 });
 
 function checkWeatherCondition(conditionParameter) {

@@ -15,14 +15,15 @@ body {
     -o-background-size: cover;
     background-size: cover;
     backdrop-filter: blur(10px);
-    height: 100vh;
-    padding-top: 80px;
+    height: 100%;
+    min-height: 100vh;
+    padding-top: 12vh;
     padding-left: -5px;
     backdrop-filter: blur(10px);
+    padding-bottom: 50px;
 }
 
 .conent-wrapper {
-    /* margin-top: 80px; */
     width: 100%;
     height: 700px;
     background: url("../graphics/rain_background.jpg") no-repeat center center;
@@ -253,16 +254,14 @@ body {
     border: none;
     color: #ababab;
     background: rgba(0, 0, 0, 0.25);
-    font-size: 25px;
-    padding: 3px 28px 5px 20px;
+    font-size: 20px;
+    padding: 5px 28px 5px 20px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
 
 .show-map-button-text {
-    font-weight: bold;
     font-size: 18px;
-    font-family: 'Epilogue', sans-serif;
 }
 
 .show-map-button:hover {
@@ -280,9 +279,42 @@ body {
 
 /* map section */
 
+@keyframes slide-down {
+    from {
+        margin-top: -620px;
+    }
+    to {
+        margin-top: 30px;
+    }
+}
+
+@keyframes slide-up {
+    from {
+        margin-top: -30;
+    }
+    to {
+        margin-top: -620px;
+        display: none;
+    }
+}
+
+.animation-slide-down-class {
+    animation-name: slide-down;
+    animation-duration: 1s;
+}
+
+.animation-slide-up-class {
+    animation-name: slide-up;
+    animation-duration: 1s;
+}
+
 .map-wrapper {
+    position: relative;
     width: 100%;
     height: 100%;
+    margin-top: 30px;
+    display: none;
+    z-index: -1;
 }
 
 .map-container {
@@ -290,8 +322,8 @@ body {
     padding-bottom: 50.25%;
     position: relative;
     height: 0;
-    border-radius: 20px;
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    border-radius: 10px;
+    /* box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px; */
 }
 
 .map-container iframe {
