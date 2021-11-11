@@ -58,17 +58,19 @@ $(document).ready(function() {
             setTimeout(function() {
                 $('.map-wrapper').hide();
                 // window.scrollTo(0, 0);
-            }, 900);
+            }, 1000);
         } else {
             $('#showMapButton').text('\u21E1 Mapa');
             $('.map-wrapper').removeClass('animation-slide-up-class');
             $('.map-wrapper').addClass('animation-slide-down-class');
             $('.map-wrapper').show();
 
-            setTimeout(function() {
-                window.scrollTo(0, document.body.scrollHeight);
-            }, 900);
 
+            for (let i = 0; i < 1000; i++) {
+                setTimeout(function() {
+                    window.scrollTo(0, document.body.scrollHeight);
+                }, i);
+            }
         }
     });
 
