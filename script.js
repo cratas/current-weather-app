@@ -2,11 +2,11 @@ $(document).ready(function() {
 
     var today = new Date();
     var date = today.getDate();
-    var time = ('0'+today.getHours()).substr(-2) + ":" + ('0'+today.getMinutes()).substr(-2);
-    var dateTime = time + ' - ' + (today.toLocaleString('en-us', {  weekday: 'long' })) + ', ' + date
-        + ' ' + (today.toLocaleString('en-us', { month: 'long' }).substring(0,3));
-    
-        $('#dateTime').html(dateTime);
+    var time = ('0' + today.getHours()).substr(-2) + ":" + ('0' + today.getMinutes()).substr(-2);
+    var dateTime = time + ' - ' + (today.toLocaleString('en-us', { weekday: 'long' })) + ', ' + date +
+        ' ' + (today.toLocaleString('en-us', { month: 'long' }).substring(0, 3));
+
+    $('#dateTime').html(dateTime);
 
     $('#submitButton').click(function() {
         let inputCity = $('#cityInput').val();
@@ -15,7 +15,7 @@ $(document).ready(function() {
         fetch(weatherURL)
             .then(response => response.json())
             .then(data => {
-                
+
                 let mapURL = 'https://maps.google.com/maps?q=' + inputCity + '&t=&z=13&ie=UTF8&iwloc=&output=embed';
 
                 $('#mapIFrame').attr("src", mapURL);
@@ -28,19 +28,19 @@ $(document).ready(function() {
                 $("#cloudiness").html(data["clouds"]["all"] + " %");
                 $("#feelTemp").html(parseInt(data["main"]["feels_like"]) - 273 + "°");
                 $("#pressure").html(data["main"]["pressure"] + " hPa");
-                
+
                 $('#cityInput').val("");
-                
+
 
                 console.log(data);
             })
-        .catch(err => {
-            alert("Wrong city name")
-            $("#city").html("");
-            $("#temperature").html("");
-            $('.image-wrapper').hide();
-            $('#cityInput').val("");
-        });
+            .catch(err => {
+                alert("Wrong city name")
+                $("#city").html("");
+                $("#temperature").html("");
+                $('.image-wrapper').hide();
+                $('#cityInput').val("");
+            });
     });
 
 
@@ -60,48 +60,66 @@ $(document).ready(function() {
         $("#descriptionOutput").html("");
         $("#windSpeedOutput").html("");
     }
-
-
-    // When the user scrolls the page, execute myFunction
-    // window.onscroll = function() {
-    //     myFunction()
-    // };
-
-    // function myFunction() {
-    //     var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    //     var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    //     var scrolled = (winScroll / height) * 100;
-    //     document.getElementById("myBar").style.width = scrolled + "%";
-    // }
-
-
 });
 
 function checkWeatherCondition(conditionParameter) {
 
-    if(conditionParameter >= 200 && conditionParameter < 240) {
+    if (conditionParameter >= 200 && conditionParameter < 240) {
         $('.weather-icon').hide();
         $("#iconStorm").show();
-    } else if(conditionParameter >= 300 && conditionParameter < 322) {
+        changeThemeRain();
+    } else if (conditionParameter >= 300 && conditionParameter < 322) {
         $('.weather-icon').hide();
         $("#iconRain").show();
-    } else if(conditionParameter >= 500 && conditionParameter < 532) {
+        changeThemeRain();
+    } else if (conditionParameter >= 500 && conditionParameter < 532) {
         $('.weather-icon').hide();
         $("#iconRain").show();
-    } else if(conditionParameter >= 600 && conditionParameter < 623) {
+        changeThemeRain();
+    } else if (conditionParameter >= 600 && conditionParameter < 623) {
         $('.weather-icon').hide();
         $("#iconSnow").show();
-    } else if(conditionParameter >= 701 && conditionParameter < 782) {
+    } else if (conditionParameter >= 701 && conditionParameter < 782) {
         $('.weather-icon').hide();
         $("#iconFog").show();
-    } else if(conditionParameter == 800) {
+        changeThemeFog();
+        console.log("kokot");
+    } else if (conditionParameter == 800) {
         $('.weather-icon').hide();
         $("#iconSun").show();
-    } else if(conditionParameter > 800 && conditionParameter < 805) {
+        changeThemeSun();
+    } else if (conditionParameter > 800 && conditionParameter < 805) {
         $('.weather-icon').hide();
         $("#iconCloud").show();
+        changeThemeCloud();
+
     }
 }
 
+function changeThemeRain() {
+    $('.conent-wrapper').css("background-image", "url('graphics/rain_background.jpg')");
+    $('.all-background').css("background-image", "url('graphics/rain_background_blur.jpg')");
+    document.documentElement.style
+        .setProperty('--lightGrey', '#ababab');
+}
 
+function changeThemeFog() {
+    $('.conent-wrapper').css("background-image", "url('graphics/fog_background.jpg')");
+    $('.all-background').css("background-image", "url('graphics/fog_background_blur.jpg')");
+    document.documentElement.style
+        .setProperty('--lightGrey', '#fff');
+}
 
+function changeThemeSun() {
+    $('.conent-wrapper').css("background-image", "url('graphics/sun_background.jpg')");
+    $('.all-background').css("background-image", "url('graphics/sun_background_blur.jpg')");
+    document.documentElement.style
+        .setProperty('--lightGrey', '#fff');
+}
+
+function changeThemeCloud() {
+    $('.conent-wrapper').css("background-image", "url('graphics/cloud_background.jpg')");
+    $('.all-background').css("background-image", "url('graphics/cloud_background_blur.jpg')");
+    document.documentElement.style
+        .setProperty('--lightGrey', '#fff');
+}

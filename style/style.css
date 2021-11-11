@@ -1,38 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Epilogue&display=swap');
-
+:root {
+    --lightGrey: #ababab;
+    --white: #fff;
+}
 
 body {
     font-family: 'Epilogue', sans-serif;
-    background:  url("../graphics/absolute_background.jpg") no-repeat center center fixed; 
+}
+
+.all-background {
+    background: url("../graphics/rain_background_blur.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+    backdrop-filter: blur(10px);
+    height: 100vh;
+    padding-top: 80px;
+    padding-left: -5px;
+    backdrop-filter: blur(10px);
 }
 
 .conent-wrapper {
-    margin-top: 80px;
+    /* margin-top: 80px; */
     width: 100%;
     height: 700px;
-    background:  url("../graphics/rain_background.jpg") no-repeat center center; 
+    background: url("../graphics/rain_background.jpg") no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     display: flex;
     flex-direction: row;
     border-radius: 10px;
 }
 
+
 /* left side of layout */
+
 .left-col {
     width: 60%;
     height: 100%;
     padding: 70px;
     display: flex;
     flex-direction: column;
-    color: #fff;
+    color: var(--white);
 }
 
 .top-row {
@@ -41,8 +54,6 @@ body {
     display: flex;
     flex-direction: row;
 }
-
-
 
 .top-row h1 {
     font-size: 120px;
@@ -58,8 +69,6 @@ body {
     justify-content: top;
     align-items: flex-end;
 }
-
-
 
 .bottom-row {
     width: 100%;
@@ -79,7 +88,6 @@ body {
     font-size: 18px;
 }
 
-
 .bottom-row-left-col {
     width: 50%;
     height: 100%;
@@ -87,7 +95,6 @@ body {
     flex-direction: column;
     justify-content: end;
 }
-
 
 .bottom-row-right-col {
     width: 50%;
@@ -111,9 +118,11 @@ body {
 
 
 /* right side of layout */
+
 .right-col {
+    position: relative;
     width: 40%;
-    background-color:rgba(0,0,0,0.2);
+    background-color: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(8px);
     padding: 35px;
     font-size: 18px;
@@ -126,16 +135,15 @@ body {
     border: none;
     background: transparent;
     color: #999999;
-    border-bottom: 1px solid #acacac;
+    border-bottom: 1px solid var(--lightGrey);
     width: 100%;
     padding: 10px 10px 10px 0px;
 }
 
 .city-input:focus {
     outline: none;
-    color: #fff;
+    color: var(--white);
 }
-
 
 .fav-cities-wrapper {
     position: relative;
@@ -149,14 +157,14 @@ body {
     position: relative;
     text-align: left;
     margin-bottom: 30px;
-    color: #acacac;
+    color: var(--lightGrey);
     border: none;
     background: transparent;
     padding-left: 0px;
 }
 
 .fav-cities-button:hover {
-    color: #fff;
+    color: var(--white);
 }
 
 .btn.submit-button {
@@ -164,7 +172,7 @@ body {
     top: 36px;
     right: 35px;
     border-radius: 0px;
-    background-color: #999999;
+    background-color: var(--lightGrey);
     padding: 10px 15px 10px 15px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -173,37 +181,34 @@ body {
 .btn.submit-button:focus {
     outline: none !important;
     box-shadow: none;
- }
-
-.btn.submit-button:hover {
-    background-color: #fff;
 }
 
+.btn.submit-button:hover {
+    background-color: var(--white);
+}
 
 .divider-line {
     height: 1px;
     width: 100%;
-    background-color: #acacac;
+    background-color: var(--lightGrey);
 }
-
 
 .weather-details-sub {
     margin-top: 80px;
-    color: #fff;
+    color: var(--white);
     text-align: left;
 }
+
 .weather-details-sub h6 {
     font-size: 1em;
 }
 
-
 .weather-details {
     margin-top: 50px;
-    color: #acacac;
+    color: var(--lightGrey);
     display: flex;
     flex-direction: row;
 }
-
 
 .weather-details-left {
     width: 50%;
@@ -221,7 +226,7 @@ body {
 
 .weather-details-right p {
     margin-bottom: 30px;
-    color: #fff;
+    color: var(--white);
 }
 
 .fav-cities-button:focus {
@@ -232,25 +237,31 @@ body {
     display: none;
 }
 
+.results {
+    font-weight: bold;
+}
+
+
 /* map section */
+
 .map-wrapper {
     width: 100%;
     height: 100%;
 }
 
-.map-container{
-    overflow:hidden;
-    padding-bottom:50.25%;
-    position:relative;
-    height:0;
+.map-container {
+    overflow: hidden;
+    padding-bottom: 50.25%;
+    position: relative;
+    height: 0;
     border-radius: 20px;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-    }
+}
 
-.map-container iframe{
-    left:0;
-    top:0;
-    height:100%;
-    width:100%;
-    position:absolute;
-    }
+.map-container iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
